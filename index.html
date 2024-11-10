@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Phasor Diagram - Adjustable Neutral Impedance</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center; /* Center content horizontally */
+      margin: 0; /* Remove default margin */
+      padding: 20px; /* Add padding to avoid content being off screen */
+      box-sizing: border-box; /* Include padding in height/width calculations */
+    }
+
+    h2 {
+      margin: 40px 0; /* Add vertical spacing for the header */
+      font-size: 34px; /* Change the size of the header */
+
+    }
+
+    div {
+      text-align: center; /* Center text within the form */
+    }
+
+    canvas {
+      border: 1px solid black;
+      margin-top: 10px;
+      display: block; /* Ensure canvas behaves as a block element */
+    }
+
+    label {
+      margin: 5px;
+    }
+
+    /* Add styles for spacing */
+    .control-group {
+      margin-bottom: 15px; /* Space between control groups */
+    }
+  </style>
+</head>
+<body>
+  <h2>Interactive Phasor Diagram - Adjustable Neutral Impedance</h2>
+
+  <div>
+    <div class="control-group">
+      <label for="voltage1">Voltage 1:</label>
+      <input type="number" id="voltage1" value="100">
+      <input type="color" id="colorVoltage1" value="#FF0000"> <!-- Color picker for Voltage 1 -->
+      <label for="current1">Current 1:</label>
+      <input type="number" id="current1" value="1">
+      <input type="color" id="colorCurrent1" value="#FF0000"> <!-- Color picker for Current 1 -->
+      <label for="voltageAngle1">Voltage Angle 1:</label>
+      <input type="number" id="voltageAngle1" value="0">
+      <label for="currentAngle1">Current Angle 1:</label>
+      <input type="number" id="currentAngle1" value="-30">
+    </div>
+
+    <div class="control-group">
+      <label for="voltage2">Voltage 2:</label>
+      <input type="number" id="voltage2" value="100">
+      <input type="color" id="colorVoltage2" value="#0000FF"> <!-- Color picker for Voltage 2 -->
+      <label for="current2">Current 2:</label>
+      <input type="number" id="current2" value="1">
+      <input type="color" id="colorCurrent2" value="#0000FF"> <!-- Color picker for Current 2 -->
+      <label for="voltageAngle2">Voltage Angle 2:</label>
+      <input type="number" id="voltageAngle2" value="120">
+      <label for="currentAngle2">Current Angle 2:</label>
+      <input type="number" id="currentAngle2" value="90">
+    </div>
+
+    <div class="control-group">
+      <label for="voltage3">Voltage 3:</label>
+      <input type="number" id="voltage3" value="100">
+      <input type="color" id="colorVoltage3" value="#A9A914"> <!-- Color picker for Voltage 3 -->
+      <label for="current3">Current 3:</label>
+      <input type="number" id="current3" value="1">
+      <input type="color" id="colorCurrent3" value="#A9A914"> <!-- Color picker for Current 3 -->
+      <label for="voltageAngle3">Voltage Angle 3:</label>
+      <input type="number" id="voltageAngle3" value="240">
+      <label for="currentAngle3">Current Angle 3:</label>
+      <input type="number" id="currentAngle3" value="210">
+    </div>
+
+    <!-- Voltage Scale Slider -->
+    <div class="control-group">
+      <label for="voltageScale">Voltage Scale:</label>
+      <input type="range" id="voltageScale" min="0.1" max="5" step="0.1" value="1">
+    </div>
+
+    <!-- Current Scale Slider -->
+    <div class="control-group">
+      <label for="currentScale">Current Scale:</label>
+      <input type="range" id="currentScale" min="0.1" max="300" step="0.1" value="25">
+    </div>
+  </div>
+
+  <!-- Add Neutral Impedance Input -->
+  <div class="control-group">
+    <label for="neutralR">Neutral Resistance (R, Ω):</label>
+    <input type="number" id="neutralR" step="0.1" value="0">
+    <label for="neutralX">Neutral Reactance (X, Ω):</label>
+    <input type="number" id="neutralX" step="0.1" value="0">
+  </div>
+
+ <!-- Neutral Current Display -->
+ <h3>Neutral Current:</h3>
+ <p>Magnitude: <span id="neutralMagnitude">0.00</span></p>
+ <p>Angle: <span id="neutralAngle">0.00</span>°</p>
+  <!-- Canvas for drawing phasors -->
+  <canvas id="phasorCanvas" width="600" height="600"></canvas>
+
+ 
+
+  <script src="phasorDiagram.js"></script>
+</body>
+</html>
+
